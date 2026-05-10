@@ -17,14 +17,9 @@ export default function CanvasSequence() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [images, setImages] = useState<HTMLImageElement[]>([]);
   const [loaded, setLoaded] = useState(0);
-  const [mounted, setMounted] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const isMutedRef = useRef(true);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   useEffect(() => {
     // Setup Audio
@@ -149,8 +144,6 @@ export default function CanvasSequence() {
       }
     }
   };
-
-  if (!mounted) return <div style={{ height: '100vh', background: '#030303' }} />;
 
   return (
     <div ref={containerRef} style={{ width: '100%', height: '100%', position: 'absolute', top: 0, left: 0 }}>

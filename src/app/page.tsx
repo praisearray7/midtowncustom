@@ -1,14 +1,15 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
+import dynamic from 'next/dynamic';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import CanvasSequence from '@/components/CanvasSequence';
-import StoreTransition from '@/components/StoreTransition';
 import { Navbar } from '@/components/Navbar';
 
+const CanvasSequence = dynamic(() => import('@/components/CanvasSequence'), { ssr: false });
+const StoreTransition = dynamic(() => import('@/components/StoreTransition'), { ssr: false });
+
 export default function Home() {
-  const [mounted, setMounted] = React.useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   
   // Luxury OS Refs
@@ -18,10 +19,6 @@ export default function Home() {
   const promptRef = useRef<HTMLDivElement>(null);
   const systemStatusRef = useRef<HTMLDivElement>(null);
   const materialRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -114,10 +111,8 @@ export default function Home() {
     }
   }, []);
 
-  if (!mounted) return <div style={{ backgroundColor: '#030303', minHeight: '100vh' }} />;
-
   return (
-    <main style={{ position: 'relative', width: '100%' }}>
+    <main style={{ position: 'relative', width: '100%', overflowX: 'hidden' }}>
       <Navbar />
       
       {/* Scroll timeline container for cinematic sequence */}
