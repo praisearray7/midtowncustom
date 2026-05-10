@@ -24,6 +24,9 @@ export default function CanvasSequence() {
 
   useEffect(() => {
     setMounted(true);
+  }, []);
+
+  useEffect(() => {
     // Setup Audio
     audioRef.current = new Audio('/audio/cinematic.mp3');
     audioRef.current.loop = true;
