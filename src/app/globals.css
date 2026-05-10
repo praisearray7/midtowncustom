@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;700;900&display=swap');
+
+:root {
+  --background: #030303;
+  --foreground: #ffffff;
+  --neon-glow: rgba(94, 114, 235, 0.5); /* subtle blue/purple */
+  --neon-text: #8e9cf3;
+  --surface: #0a0a0a;
+  --surface-light: #151515;
+  --border: rgba(255, 255, 255, 0.1);
+  --shadow-premium: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html, body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  overscroll-behavior: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Outfit', sans-serif;
+}
+
+/* Lenis Recommended Styles */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* Custom Scrollbar for sleek UI */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Utility Classes */
+.cinematic-text {
+  background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.4) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glass-panel {
+  background: rgba(10, 10, 10, 0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.text-glow {
+  text-shadow: 0 0 20px var(--neon-glow);
+}
+
+/* Cinematic Overlays to mask blur */
+.cinematic-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.noise {
+  position: absolute;
+  inset: 0;
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+  opacity: 0.15;
+  mix-blend-mode: overlay;
+  filter: contrast(150%) brightness(100%);
+}
+
+.vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, transparent 40%, rgba(0,0,0,0.8) 100%);
+}
+
+.scanlines {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 50%,
+    rgba(0, 0, 0, 0.1) 50%
+  );
+  background-size: 100% 4px;
+}
+
+/* Cinematic Brand Narrative Typography */
+.narrative-text {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #fff;
+  line-height: 1;
+  pointer-events: none;
+  filter: blur(0px);
+  will-change: transform, opacity, filter;
+}
+
+.narrative-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.4em;
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+/* Luxury OS HUD */
+.system-ui {
+  font-family: 'Inter', monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--neon-text);
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.system-label {
+  opacity: 0.4;
+  font-size: 9px;
+  margin-bottom: 4px;
+}
+
+.system-value {
+  font-weight: 500;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.ui-fragment {
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  padding-left: 15px;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.flicker-anim {
+  animation: hud-flicker 4s infinite;
+}
+
+@keyframes hud-flicker {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+  52% { opacity: 0.2; }
+  54% { opacity: 0.5; }
+}
+
+.blur-sharp-entry {
+  animation: blur-to-sharp 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes blur-to-sharp {
+  0% { filter: blur(20px); opacity: 0; transform: translateY(20px); }
+  100% { filter: blur(0px); opacity: 1; transform: translateY(0); }
+}
